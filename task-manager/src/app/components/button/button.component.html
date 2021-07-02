@@ -1,0 +1,5 @@
+<!-- For inline styles, you have to use a diretive [ngStyle] -->
+<!-- For events like onClick or onSubmit, use () -->
+<button [ngStyle]="{ 'background-color': color }" class="btn" (click)="onClick()">
+    {{ text }}
+</button>
