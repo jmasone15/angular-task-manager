@@ -9,17 +9,19 @@ import { Subscription } from 'rxjs';
 })
 export class HeaderComponent implements OnInit {
   title: string = 'Task Tracker';
-  showAddTask: boolean;
+  showAddTask: boolean = false;
   subscription: Subscription;
 
   // A constructor runs whenever a component is initialized
-  constructor(private uiservice: UiService) { }
+  constructor(private uiService: UiService) {
+    this.subscription = this.uiService.onToggle().subscribe((value) => (this.showAddTask = value));
+  }
 
   // Lifecycle method functions here
   ngOnInit(): void {
   }
 
   toggleAddTask() {
-    this.uiservice.toggleAddTask();
+    this.uiService.toggleAddTask();
   }
 }
