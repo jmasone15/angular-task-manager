@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UiService } from '../../services/ui.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -7,15 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   title: string = 'Task Tracker';
+  showAddTask: boolean;
+  subscription: Subscription;
 
   // A constructor runs whenever a component is initialized
-  constructor() { }
+  constructor(private uiservice: UiService) { }
 
   // Lifecycle method functions here
   ngOnInit(): void {
   }
 
   toggleAddTask() {
-    console.log("toggle");
+    this.uiservice.toggleAddTask();
   }
 }
